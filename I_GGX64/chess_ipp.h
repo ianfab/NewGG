@@ -568,7 +568,7 @@ extern typePOS ROOT_POSITION[MAX_CPUS][RP_PER_CPU];
 extern typePOS ROOT_POSIZIONE0[1];
 extern typePOS NULL_PARENT[1];
 
-#define PB90(x) POSITION->b90[x]
+// #define PB90(x) POSITION->b90[x]
 #define POS_SIDE POSITION->wtm
 
 #define MAXIMUM_PLY 1024   // hole_maximum

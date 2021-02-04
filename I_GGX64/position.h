@@ -317,7 +317,7 @@ inline Color Position::side_to_move() const {
 
 
 inline Piece Position::piece_on(Square s) const {
-	return b90[s];
+	return ((unsigned int) s > 90u) ? EMPTY : b90[s];
 }
 
 inline Piece Position::moved_piece(Move m) const {
