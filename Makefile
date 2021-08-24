@@ -9,8 +9,8 @@ INCLUDE_PATHS += -I$(PWD)/I_GGX64 -I$(PWD)/endgame
 COMMON_DEFS += $(INCLUDE_PATHS) -std=c++11 -Ofast
 CCFLAGS-x86_64 = -msse -msse2 -msse3 -msse4.1 -msse4.2 
 CCFLAGS-arm64 = -arch arm64
-CCFLAGS += -stdlib=libc++ -Wno-shift-negative-value -Wno-c++11-extensions -Wno-switch $(CCFLAGS-$(ARCH)) $(COMMON_DEFS)
-LDFLAGS += -lc++ -lpthread
+CCFLAGS += -Wno-shift-negative-value -Wno-c++11-extensions -Wno-switch $(CCFLAGS-$(ARCH)) $(COMMON_DEFS)
+LDFLAGS += -lpthread
 
 objs :=
 
