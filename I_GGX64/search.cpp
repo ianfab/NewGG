@@ -1546,9 +1546,9 @@ string UCI::pv(Position& pos, Depth depth, Value alpha, Value beta) {
 			<< UCI::value(v);
 
 		if (i == PVIdx) //      if (!tb && i == PVIdx)
-			ss << (v >= beta ? " lowerbound" : v <= alpha ? " upperbound" : "")
+			ss << (v >= beta ? " lowerbound" : v <= alpha ? " upperbound" : "");
 
-			<< " time " << elapsed
+		ss  << " time " << elapsed
 			<< " nodes " << (nodesSearched * CYCLONE_MUL_NPS + 1)
 			<< " nps " << (nodesSearched * CYCLONE_MUL_NPS) * 1000 / elapsed;
 

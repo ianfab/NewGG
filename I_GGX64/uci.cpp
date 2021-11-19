@@ -250,9 +250,10 @@ string UCI::value(Value v) {
 	assert(-VALUE_INFINITE < v && v < VALUE_INFINITE);
 
 	stringstream ss;
+	ss << " score";
 
 	if (abs(v) < VALUE_MATE - MAX_PLY)
-		ss << " score " << v * 100 / 100;
+		ss << " cp " << v * 100 / 100;
 	else
 		ss << " mate " << (v > 0 ? VALUE_MATE - v + 1 : -VALUE_MATE - v) / 2;
 
