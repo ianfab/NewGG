@@ -151,6 +151,32 @@ namespace {
 
 extern bool ccmd(Position& pos, istringstream& uip);
 
+void emitPlainEntry(Position& pos)
+{
+	std::string buffer = "";
+	buffer += "fen ";
+	buffer += pos.fen();
+	buffer += '\n';
+
+	buffer += "move ";
+	buffer += "0000";
+	buffer += '\n';
+
+	buffer += "score ";
+	buffer += std::to_string(Eval::evaluate(pos));
+	buffer += '\n';
+
+	buffer += "ply ";
+	buffer += std::to_string(pos.game_ply());
+	buffer += '\n';
+
+	buffer += "result ";
+	buffer += std::to_string(0);
+	buffer += "\ne\n";
+
+	sync_cout << buffer << sync_endl;
+}
+
 /// Wait for a command from the user, parse this text string as an UCI command,
 /// and call the appropriate functions. Also intercepts EOF from stdin to ensure
 /// that we exit gracefully if the GUI dies unexpectedly. In addition to the UCI
@@ -228,6 +254,11 @@ void UCI::loop(int argc, char* argv[]) {
 				<< Options["Threads"] << " " << depth << " current " << token;
 
 			benchmark(pos, ss);
+		}
+
+		else if (token == "gensfen")
+		{
+			emitPlainEntry(pos);
 		}
 
 		//else
